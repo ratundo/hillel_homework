@@ -11,15 +11,23 @@ def formatted_name(first_name, last_name, middle_name=''):
 
 class TestFormattedName(unittest.TestCase):
 
-    def test_correct_cases(self):
+    def test_no_middle_name(self):
         self.assertEqual(formatted_name('a', 'b'), 'A B')
+
+    def test_fullname(self):
         self.assertEqual(formatted_name('a', 'b', 'c'), 'A C B')
+
+    def test_title(self):
         self.assertEqual(formatted_name('ABC', 'AbC', 'ABC'), 'Abc Abc Abc')
 
-    def test_errors(self):
+    def test_empty_string(self):
         with self.assertRaises(TypeError):
             formatted_name('')
+
+    def test_invalid_symbols(self):
         with self.assertRaises(TypeError):
             formatted_name(1, 2)
+
+    def test_more_arguments(self):
         with self.assertRaises(TypeError):
             formatted_name('a', 'b', 'c', 'd')

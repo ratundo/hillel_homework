@@ -26,13 +26,19 @@ class TestFibonacci(unittest.TestCase):
 
     def test_correct_fib_number(self):
         self.assertEqual(self.obj(9), 34)
+
+    def test_null_fib_number(self):
         self.assertEqual(self.obj(0), 0)
 
-    def test_error(self):
+    def test_invalid_symbol(self):
         with self.assertRaises(ValueError):
             self.obj('a')
+
+    def test_negative_digit(self):
         with self.assertRaises(ValueError):
             self.obj(-5)
+
+    def test_more_arguments(self):
         with self.assertRaises(TypeError):
             self.obj(1, 2)
 
