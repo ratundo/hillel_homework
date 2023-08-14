@@ -12,13 +12,18 @@ def formatted_name(first_name, last_name, middle_name=''):
 class TestFormattedName(unittest.TestCase):
 
     def test_no_middle_name(self):
-        self.assertEqual(formatted_name('a', 'b'), 'A B')
+        self.assertEqual(formatted_name('Taras', \
+                                        'Shevchenko'), \
+                         'Taras Shevchenko')
 
     def test_fullname(self):
-        self.assertEqual(formatted_name('a', 'b', 'c'), 'A C B')
+        self.assertEqual(formatted_name('Taras', 'Shevchenko', \
+                                        'Hryhorovych'), \
+                         'Taras Hryhorovych Shevchenko')
 
     def test_title(self):
-        self.assertEqual(formatted_name('ABC', 'AbC', 'ABC'), 'Abc Abc Abc')
+        self.assertEqual(formatted_name('TARAS', 'sHeVCHENko', \
+                                        'HRyhoRoVyCh'), 'Taras Hryhorovych Shevchenko')
 
     def test_empty_string(self):
         with self.assertRaises(TypeError):
